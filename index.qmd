@@ -18,14 +18,14 @@ library(yaml)
 library(stringr)
 library(knitr)
 
-# Set locale to English UK for proper date formatting
+# set locale to English UK for proper date formatting
 suppressWarnings(invisible(Sys.setlocale("LC_TIME", "en_GB.UTF-8")))
 
-# Function to extract YAML frontmatter from .qmd files
+# function to extract YAML frontmatter from .qmd files
 extract_metadata <- function(file_path) {
   lines <- readLines(file_path, warn = FALSE)
   
-  # Find YAML frontmatter boundaries
+  # find YAML frontmatter boundaries
   yaml_start <- which(lines == "---")[1]
   yaml_end <- which(lines == "---")[2]
   
@@ -34,14 +34,14 @@ extract_metadata <- function(file_path) {
     return(NULL)
   }
   
-  # Extract and parse YAML
+  # extract and parse YAML
   yaml_content <- lines[(yaml_start + 1):(yaml_end - 1)]
   yaml_text <- paste(yaml_content, collapse = "\n")
   
   tryCatch({
     metadata <- yaml.load(yaml_text)
     
-    # Determine challenge name from folder path (i.e., challenges/YYYY_WK_Title)
+    # determine challenge name from folder path (i.e., challenges/YYYY_WK_Title)
     challenge_dir <- basename(dirname(dirname(file_path)))
     
     result <- data.frame(
@@ -56,12 +56,12 @@ extract_metadata <- function(file_path) {
       stringsAsFactors = FALSE
     )
     
-    # Handle categories as a single string
+    # handle categories as a single string
     result$categories_list <- list(
       if (!is.null(metadata$categories)) metadata$categories else character(0)
     )
     
-    # Determine language from path
+    # determine language from path
     if (grepl("/r/", result$relative_path)) {
       result$language <- "R"
     } else if (grepl("/python/", result$relative_path)) {
@@ -70,7 +70,7 @@ extract_metadata <- function(file_path) {
       result$language <- "Unknown"
     }
     
-    # Extract week number from path for additional context
+    # extract week number from path for additional context
     week_match <- str_extract(result$relative_path, "week_(\\d+)")
     if (!is.na(week_match)) {
       week_num <- str_extract(week_match, "\\d+")
@@ -79,11 +79,11 @@ extract_metadata <- function(file_path) {
       result$week <- ""
     }
     
-    # Extract date for sorting
+    # extract date for sorting
     if (result$date != "") {
       result$sort_date <- as.Date(result$date)
     } else {
-      # Try to extract date from filename
+      # try to extract date from filename
       date_match <- str_extract(basename(file_path), "\\d{4}-\\d{2}-\\d{2}")
       if (!is.na(date_match)) {
         result$sort_date <- as.Date(date_match)
@@ -100,33 +100,28 @@ extract_metadata <- function(file_path) {
   })
 }
 
-# Find all .qmd files in r/ and python/ directories (recursive)
-qmd_files <- c(
-  list.files("challenges", pattern = "\\.qmd$", full.names = TRUE, recursive = TRUE) %>%
-    grep("/r/|/python/", ., value = TRUE)
-)
+# find all .qmd files in r/ and python/ directories under challenges/
+qmd_files <- list.files(
+  "challenges",
+  pattern = "\\.qmd$",
+  recursive = TRUE,
+  full.names = TRUE
+) %>%
+  grep("/r/|/python/", ., value = TRUE)
 
-qmd_files <- c(
-  list.files("challenges", pattern = "\\.qmd$", full.names = TRUE, recursive = TRUE) %>%
-    grep("/r/|/python/", ., value = TRUE)
-)
+# extract metadata and bind if any valid rows
+metadata_list <- map(qmd_files, extract_metadata)
+valid_metadata <- keep(metadata_list, ~ !is.null(.x))
 
-if (length(qmd_files) == 0) {
-  all_metadata <- tibble::tibble()
-} else {
-  all_metadata <- map_dfr(qmd_files, extract_metadata) %>%
+if (length(valid_metadata) > 0) {
+  all_metadata <- bind_rows(valid_metadata) %>%
     filter(!is.na(title)) %>%
     distinct(relative_path, .keep_all = TRUE) %>%
     mutate(year = format(sort_date, "%Y")) %>%
     arrange(desc(sort_date))
+} else {
+  all_metadata <- tibble::tibble()
 }
-
-# Extract metadata from all files
-all_metadata <- map_dfr(qmd_files, extract_metadata) %>%
-  filter(!is.na(title)) %>%  # Remove any rows with missing titles
-  distinct(relative_path, .keep_all = TRUE) %>%  # Remove duplicates by file path
-  mutate(year = format(sort_date, "%Y")) %>%  # Extract year for grouping
-  arrange(desc(sort_date))
 ```
 
 ```{r}
