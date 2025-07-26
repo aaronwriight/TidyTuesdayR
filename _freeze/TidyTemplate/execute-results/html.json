@@ -1,0 +1,15 @@
+{
+  "hash": "bb6442a5a8b5b17efcb48a9ac7a65b72",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"TidyTemplate\"\nauthor: \"Aaron Wright [`aawva@mit.edu`]\"\ndate: \"2025-06-19\"\noutput:\n  html_document: default\n  pdf_document: default\nexecute:\n  eval: false\n---\n\n\n\n> **Week:** <br>\n> **Data:** <br>\n> **Source:** <br>\n> **Article:** <br>\n\n[TidyTuesday on GitHub](https://github.com/rfordatascience/tidytuesday) <br>\nReference(s): [@tidytuesdayR]\n\n<!-- THEMATICS AND RENDERING -->\n\n::: cell\n\n\n```{=html}\n<style>\n/* inline code */\ncode {\n  background-color: #f5f5f5;\n  color: #859901; /* solarized green */\n  border-radius: 4px;\n  padding: 2px 4px;\n  font-family: monospace;\n  font-size: 0.95em;\n}\n\n/* list item spacing for inline code */\nli code {\n  margin-left: 2px;\n}\n\n/* link styling */\na {\n  color: #2AA198; /* solarized cyan */\n  text-decoration: none;\n}\na:hover {\n  text-decoration: underline;\n}\n</style>\n```\n\n\n:::\n\n\n\n\n\n\n\n<!-- CONFIG-->\n\n## Overview\n\nThis template is designed to be reproducible for any given TidyTuesday challenge. Delete this Overview chunk (and other information, as needed) once the file has been duplicated for the week.\n\n## Session Info\n\nSession information is printed for reproducibility. GitHub does not render .qmd files by default. Render to markdown using --to gfm or --to markdown if intending to view on GitHub.\n\n-   R version: R version 4.4.1 (2024-06-14)\n-   Python version: displayed via `!python --version`\\\n-   Quarto version: `quarto --version`\\\n-   Key packages: `tidyverse`, `here`, `readxl`, `stringr`\n-   Quarto rendering: `quarto render README.qmd --to gfm` or `quarto render README.qmd --to markdown`\n\n## Environment & data\n\nEssential packages included are used in all TidyTuesday challenges. Supplemental are challenge-specific.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# essentials\nlibrary(here)\nlibrary(tidyverse)\nlibrary(tidytuesdayR)\n\n# additional libraries here\n```\n:::\n\n\n\n\n\n<!-- CODE -->\n\n## Tidying\n\nData for a give project live at `here(\"data\", \"YYYY_WK_TITLE\")`. Use tidying script from GitHub as provided.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# code for tidying here\n```\n:::\n\n\n\n## TidyTuesday challenge\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# main code here - have fun!\n```\n:::\n\n\n\n## Final visualization\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# visualization here\n```\n:::\n\n\n\n## Citation information (TidyTuesdayR)\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# cite your sources!\ncitation(\"tidytuesdayR\")\n```\n:::\n\n\n\n## Sharing\n\nConsidering adding a caption and sharing to socials!\n\n\n\n::: {.cell}\n\n```{.html .cell-code}\n# caption here\n```\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
