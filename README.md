@@ -37,9 +37,11 @@ Visit the live website: [here](https://aaronwriight.github.io/tidy_tuesday/)
 
 ### Quick Template Creation
 
-Use the included script to generate a new visualization from the template (from top-level directory):
+Use the included script `new-viz-from-template.sh` to generate a new visualization from the template (from top-level directory):
 
 ```bash
+# Usage: $0 <year> <week> <language> <title>
+
 # Create a new R analysis
 ./new-viz-from-template.sh 2025 29 r "MTA Permanent Art Catalog"
 
