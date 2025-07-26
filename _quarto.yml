@@ -3,17 +3,19 @@ project:
   output-dir: _site
 
 website:
-  title: "TidyTuesday Visualizations"
+  title: "tidy tuesday"
   description: "A collection of data visualizations for Tidy Tuesday challenges"
   search: false
    
   navbar:
-    title: "TidyTuesday"
+    title: "tidy tuesday"
     left:
-      - href: index.qmd
-        text: Home
+#      - href: index.qmd
+#        text: Home
       - href: about.qmd
         text: About
+      - text: "↩ Return to Website"
+        href: https://aaronwriight.github.io/
     
     tools:
       - icon: github
