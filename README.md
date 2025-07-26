@@ -37,7 +37,7 @@ Visit the live website: [here](https://aaronwriight.github.io/tidy_tuesday/)
 
 ### Quick Template Creation
 
-Use the included script to generate a new visualization from the template:
+Use the included script to generate a new visualization from the template (from top-level directory):
 
 ```bash
 # Create a new R analysis

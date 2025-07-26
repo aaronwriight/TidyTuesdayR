@@ -5,9 +5,12 @@ set -e
 # function to calculate week number from date
 get_week_number() {
     local date=$1
-    # convert date to ISO week number
+    # Convert date to week number (ISO week)
     local week=$(date -d "$date" +%V)
+    # Remove leading zero if present
     week=$((10#$week))
+    # Remove as it is for the week before
+    week=$((week - 1))
     echo $week
 }
 
@@ -106,7 +109,7 @@ else
     fi
 fi
 
-echo "✅ Created new visualization:"
+echo "Created new visualization:"
 echo "   $QMD_FILE"
 echo ""
 echo "Next steps:"

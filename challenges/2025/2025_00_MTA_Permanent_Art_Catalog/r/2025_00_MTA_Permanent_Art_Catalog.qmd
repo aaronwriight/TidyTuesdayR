@@ -1,0 +1,77 @@
+---
+title: "MTA Permanent Art Catalog"
+subtitle: "TidyTuesday 2025-7-29"
+date: "2025-7-29"
+author: "Aaron Wright"
+categories: [r, ggplot2, tidyverse, data-viz]
+image: "plot.svg"
+---
+
+## Overview
+
+This week's TidyTuesday focused on [DATASET_DESCRIPTION]. I explored [KEY_INSIGHTS] using r to [VISUALIZATION_APPROACH].
+
+## Dataset
+
+```{r}
+#| label: load-data
+#| message: false
+#| warning: false
+
+# Get data
+library(tidytuesdayR)
+dat <- tt_load("2025-7-29")
+
+# Load other required libraries
+{{LIBRARY_IMPORTS}}
+
+```
+
+### Data Structure
+
+```{r}
+#| label: explore-data
+
+# Examine the dataset
+{{DATA_EXPLORATION}}
+```
+
+## Analysis
+
+### Data Preparation
+
+```{r}
+#| label: prep-data
+
+# Clean and prepare the data
+{{DATA_PREPARATION}}
+```
+
+## Visualization
+
+```{r}
+#| label: main-plot
+#| fig-width: 12
+#| fig-height: 8
+#| warning: false
+
+# Create the main visualization
+{{MAIN_VISUALIZATION}}
+```
+
+## Technical Notes
+
+- **Data Source**: [TidyTuesday GitHub Repository](https://github.com/rfordatascience/tidytuesday)
+- **Analysis Date**: 2025-7-29
+- **Tools Used**: R, ggplot2, tidyverse
+- **Key Libraries**: ggplot2, dplyr, tidyr
+
+## Viz
+
+![]({IMAGE_FILE})
+
+## Next Steps
+
+- [POTENTIAL_IMPROVEMENTS]
+- [FUTURE_ANALYSIS_IDEAS]
+- [DATA_QUALITY_NOTES]
