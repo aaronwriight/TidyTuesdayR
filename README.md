@@ -159,3 +159,17 @@ The website is automatically deployed to GitHub Pages when changes are pushed to
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
+
+<!--
+```{text}
+challenges/
+  └── 2024_31_AirQuality/
+        ├── r/
+        │   └── 2024_31_AirQuality.qmd
+        ├── python/    # optional
+        ├── data/
+        ├── gif/
+        ├── plots/
+        └── images/
+```
+-->

@@ -30,6 +30,7 @@ extract_metadata <- function(file_path) {
   yaml_end <- which(lines == "---")[2]
   
   if (is.na(yaml_start) || is.na(yaml_end) || yaml_start >= yaml_end) {
+    message("Skipping file (invalid YAML): ", file_path)
     return(NULL)
   }
   
@@ -40,8 +41,11 @@ extract_metadata <- function(file_path) {
   tryCatch({
     metadata <- yaml.load(yaml_text)
     
-    # Create a single row data frame to avoid list expansion issues
+    # Determine challenge name from folder path (i.e., challenges/YYYY_WK_Title)
+    challenge_dir <- basename(dirname(dirname(file_path)))
+    
     result <- data.frame(
+      challenge = challenge_dir,
       file_path = file_path,
       relative_path = gsub("^\\./", "", file_path),
       title = ifelse(is.null(metadata$title), "Untitled", metadata$title),
@@ -53,16 +57,14 @@ extract_metadata <- function(file_path) {
     )
     
     # Handle categories as a single string
-    if (!is.null(metadata$categories)) {
-      result$categories_list <- list(metadata$categories)
-    } else {
-      result$categories_list <- list(character(0))
-    }
+    result$categories_list <- list(
+      if (!is.null(metadata$categories)) metadata$categories else character(0)
+    )
     
     # Determine language from path
-    if (grepl("^r/", result$relative_path)) {
+    if (grepl("/r/", result$relative_path)) {
       result$language <- "R"
-    } else if (grepl("^python/", result$relative_path)) {
+    } else if (grepl("/python/", result$relative_path)) {
       result$language <- "Python"
     } else {
       result$language <- "Unknown"
@@ -93,15 +95,31 @@ extract_metadata <- function(file_path) {
     
     return(result)
   }, error = function(e) {
+    message("Metadata extraction failed: ", file_path)
     return(NULL)
   })
 }
 
 # Find all .qmd files in r/ and python/ directories (recursive)
 qmd_files <- c(
-  list.files("r", pattern = "\\.qmd$", full.names = TRUE, recursive = TRUE),
-  list.files("python", pattern = "\\.qmd$", full.names = TRUE, recursive = TRUE)
+  list.files("challenges", pattern = "\\.qmd$", full.names = TRUE, recursive = TRUE) %>%
+    grep("/r/|/python/", ., value = TRUE)
 )
+
+qmd_files <- c(
+  list.files("challenges", pattern = "\\.qmd$", full.names = TRUE, recursive = TRUE) %>%
+    grep("/r/|/python/", ., value = TRUE)
+)
+
+if (length(qmd_files) == 0) {
+  all_metadata <- tibble::tibble()
+} else {
+  all_metadata <- map_dfr(qmd_files, extract_metadata) %>%
+    filter(!is.na(title)) %>%
+    distinct(relative_path, .keep_all = TRUE) %>%
+    mutate(year = format(sort_date, "%Y")) %>%
+    arrange(desc(sort_date))
+}
 
 # Extract metadata from all files
 all_metadata <- map_dfr(qmd_files, extract_metadata) %>%
