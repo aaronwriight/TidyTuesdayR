@@ -41,13 +41,13 @@ Use the included script to generate a new visualization from the template (from 
 
 ```bash
 # Create a new R analysis
-./new-viz-from-template.sh 2024-12-15 r "Coffee Analysis"
+./new-viz-from-template.sh 2025 29 r "MTA Permanent Art Catalog"
 
 # Create a new Python analysis  
-./new-viz-from-template.sh 2024-12-15 python "Climate Data Study"
+./new-viz-from-template.sh 2025 2 python "posit::conf talks"
 
 # Example with single word title
-./new-viz-from-template.sh 2024-12-20 r "Olympics"
+./new-viz-from-template.sh 2024 39 r "Olympiad"
 ```
 
 **Arguments:**
