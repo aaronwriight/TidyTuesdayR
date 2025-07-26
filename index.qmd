@@ -1,10 +1,10 @@
 ---
-title: "Gallery"
-subtitle: "All TidyTuesday viz in one gallery, broken down by year"
+title: "tidy tuesday gallery"
 format: 
   html:
     page-layout: full
     toc: false
+---
 ---
 
 ```{r}

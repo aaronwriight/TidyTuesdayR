@@ -10,11 +10,9 @@ website:
   navbar:
     title: "tidy tuesday"
     left:
-#      - href: index.qmd
-#        text: Home
       - href: about.qmd
-        text: About
-      - text: "↩ Return to Website"
+        text: about
+      - text: "↩ return to website"
         href: https://aaronwriight.github.io/
     
     tools:

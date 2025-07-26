@@ -1,6 +1,5 @@
 ---
-title: "About This Project"
-subtitle: "My journey through data visualization"
+title: "about tidy tuesday"
 ---
 
 [I’m currently building this platform – more to come soon!]
