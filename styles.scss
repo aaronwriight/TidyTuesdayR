@@ -1,46 +1,46 @@
 /*-- scss:defaults --*/
 
-// Color palette
-$primary: #667eea;
-$secondary: #764ba2;
-$success: #28a745;
-$info: #17a2b8;
-$warning: #ffc107;
-$danger: #dc3545;
-$light: #f8f9fa;
-$dark: #2c3e50;
+// color palette (customized with solarized and COADM tones)
+$primary: #2AA198;     // solarized cyan
+$secondary: #859901;   // solarized green
+$success: #42C098;     // COADM green
+$info: #8AD1D8;        // COADM cyan
+$warning: #FCE53A;     // COADM yellow
+$danger: #FC5049;      // COADM red
+$light: #F6EFE9;       // COADM light sand
+$dark: #133B40;        // COADM deep teal
 
-// Extended color variables
-$accent: #e74c3c;
-$muted: #6c757d;
-$code-bg: #f8f9fa;
-$hover-shadow: rgba(0, 0, 0, 0.15);
+// extended color variables
+$accent: #FC5049;      // same as danger
+$muted: #859901;       // softened contrast
+$code-bg: #F6EFE9;     // match light sand
+$hover-shadow: rgba(19, 59, 64, 0.15); // softened shadow from $dark
 
-// Typography
+// typography
 $font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 $font-family-monospace: "Fira Code", "SF Mono", Monaco, Inconsolata, "Roboto Mono", monospace;
 $headings-font-weight: 600;
 $font-weight-bold: 700;
 
-// Layout
+// layout
 $navbar-bg: rgba(255, 255, 255, 0.95);
 $navbar-brand-font-size: 1.5rem;
 $border-radius: 8px;
 $border-radius-sm: 4px;
 $border-radius-lg: 12px;
 
-// Spacing
+// spacing
 $spacer: 1rem;
 $spacer-sm: 0.5rem;
 $spacer-lg: 2rem;
 $spacer-xl: 3rem;
 
-// Shadows
-$box-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-$box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-$box-shadow-lg: 0 8px 15px rgba(0, 0, 0, 0.2);
+// shadows
+$box-shadow-sm: 0 2px 4px rgba(19, 59, 64, 0.1);
+$box-shadow: 0 4px 6px rgba(19, 59, 64, 0.1);
+$box-shadow-lg: 0 8px 15px rgba(19, 59, 64, 0.2);
 
-// Transitions
+// transitions
 $transition-base: all 0.2s ease;
 $transition-slow: all 0.3s ease;
 
@@ -163,40 +163,54 @@ a {
   border-left: 4px solid $primary;
   border-radius: 0 $border-radius-sm $border-radius-sm 0;
   font-family: $font-family-monospace;
-  
-  // Syntax highlighting
-  .kw { color: #d73a49; } // Keywords
-  .dt { color: #005cc5; } // Data types
-  .st { color: #032f62; } // Strings
-  .co { color: #6a737d; } // Comments
-  .fu { color: #6f42c1; } // Functions
-  .va { color: #e36209; } // Variables
+  padding: $spacer;
+  overflow-x: auto;
+
+  // syntax highlighting
+  .kw { color: $secondary; } // keywords (solarized green)
+  .dt { color: $secondary; } // data types (solarized green)
+  .st { color: $secondary; } // strings (solarized green)
+  .co { color: #6a737d; font-style: italic; } // comments (gray + italic)
+  .fu { color: $primary; font-weight: 500; } // functions (solarized cyan)
+  .va { color: #e36209; } // variables (original orange, kept)
 }
 
 // Callouts
 .callout {
   border-left: 4px solid $primary;
-  background-color: rgba($primary, 0.05);
-  border-radius: 0 $border-radius-sm $border-radius-sm 0;
-  
+  background-color: rgba($primary, 0.03);
+  border-radius: $border-radius-sm;
+  padding: $spacer;
+
   &.callout-note {
     border-left-color: $info;
-    background-color: rgba($info, 0.05);
+    background-color: rgba($info, 0.04);
   }
-  
+
   &.callout-warning {
     border-left-color: $warning;
-    background-color: rgba($warning, 0.05);
+    background-color: rgba($warning, 0.08);
   }
-  
+
   &.callout-important {
     border-left-color: $danger;
     background-color: rgba($danger, 0.05);
   }
-  
+
   &.callout-tip {
     border-left-color: $success;
     background-color: rgba($success, 0.05);
+  }
+
+  .callout-title {
+    font-weight: $font-weight-bold;
+    color: $dark;
+  }
+
+  .callout-body {
+    color: $muted;
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 }
 

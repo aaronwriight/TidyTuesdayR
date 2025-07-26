@@ -2,11 +2,11 @@
 
 A collection of visualizations for Tidy Tuesdays, built as a Quarto website with R and Python support.
 
-## 🌐 Website
+## Website
 
 Visit the live website: [here](https://gnoblet.github.io/TidyTuesday/)
 
-## 🚀 Development Setup
+## Development Setup
 
 ### Prerequisites
 
@@ -33,7 +33,7 @@ Visit the live website: [here](https://gnoblet.github.io/TidyTuesday/)
    quarto preview
    ```
 
-## 📝 Creating New Visualizations
+## Creating New Visualizations
 
 ### Quick Template Creation
 
@@ -116,7 +116,7 @@ quarto render
 quarto preview
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── .github/workflows/    # GitHub Actions for deployment
@@ -130,7 +130,7 @@ quarto preview
 └── _quarto.yml         # Quarto configuration
 ```
 
-## 🔄 Deployment
+## Deployment
 
 The website is automatically deployed to GitHub Pages when changes are pushed to the main branch. The GitHub Actions workflow:
 
@@ -140,7 +140,7 @@ The website is automatically deployed to GitHub Pages when changes are pushed to
 4. Renders the Quarto website
 5. Deploys to GitHub Pages
 
-## 📊 Adding New Projects
+## Adding New Projects
 
 ### R Projects
 1. Add a corresponding Quarto document in `r/YYYY-MM-DD.qmd`
@@ -150,12 +150,12 @@ The website is automatically deployed to GitHub Pages when changes are pushed to
 1. Add a corresponding Quarto document in `python/YYYY-MM-DD.qmd`
 2. Update `_quarto.yml` sidebar navigation (automated via ./new-viz-from-template.sh)
 
-## 🛠️ Package Management
+## Package Management
 
 - **R packages**: Managed by [renv](https://rstudio.github.io/renv/)
 - **Python packages**: Managed by [uv](https://docs.astral.sh/uv/)
 - **Repository**: Fast Linux binaries from [p3m.dev](https://p3m.dev/)
 
-## 📄 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
