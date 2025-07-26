@@ -4,7 +4,7 @@ A collection of visualizations for Tidy Tuesdays, built as a Quarto website with
 
 ## Website
 
-Visit the live website: [here](https://gnoblet.github.io/TidyTuesday/)
+Visit the live website: [here](https://aaronwriight.github.io/tidy_tuesday/)
 
 ## Development Setup
 
@@ -17,7 +17,7 @@ Visit the live website: [here](https://gnoblet.github.io/TidyTuesday/)
 
 ### Quick Start
 
-1. Clone the repository:
+1. Clone the original repository:
    ```bash
    git clone https://github.com/gnoblet/TidyTuesday.git
    cd TidyTuesday

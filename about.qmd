@@ -3,6 +3,9 @@ title: "About This Project"
 subtitle: "My journey through data visualization"
 ---
 
+[I’m currently building this platform – more to come soon!]
+
+<!-- 
 ## About TidyTuesday
 
 TidyTuesday is a weekly social data project that focuses on understanding how to summarize and arrange data to make meaningful and/or beautiful charts.
@@ -46,3 +49,4 @@ Feel free to explore the visualizations and reach out if you'd like to discuss o
 - **Email**: gnoblet[at]zaclys.net
 
 ---
+-->

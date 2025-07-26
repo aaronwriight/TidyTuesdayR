@@ -2,7 +2,7 @@
 title: "{{TITLE}}"
 subtitle: "TidyTuesday {{DATE}}"
 date: "{{DATE}}"
-author: "gnoblet"
+author: "Aaron Wright"
 categories: [{{LANGUAGE}}, {{CATEGORIES}}]
 image: "{{IMAGE_FILE}}"
 ---

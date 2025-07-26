@@ -17,13 +17,13 @@ website:
     
     tools:
       - icon: github
-        href: https://github.com/gnoblet/TidyTuesday
+        href: https://github.com/aaronwriight/tidytuesday
       - icon: twitter
-        href: https://bsky.app/profile/gnoblet.bsky.social
+        href: https://bsky.app/profile/aaronwriight.bsky.social
       - icon: linkedin
-        href: https://www.linkedin.com/in/gnoblet/
+        href: https://www.linkedin.com/in/aaron-wriight/
       - icon: envelope
-        href: mailto:gnoblet@zaclys.net
+        href: mailto:aawva@mit.edu
         
 
 format:
