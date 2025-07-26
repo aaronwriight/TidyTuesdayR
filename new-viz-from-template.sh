@@ -5,12 +5,9 @@ set -e
 # function to calculate week number from date
 get_week_number() {
     local date=$1
-    # Convert date to week number (ISO week)
+    # convert date to ISO week number
     local week=$(date -d "$date" +%V)
-    # Remove leading zero if present
     week=$((10#$week))
-    # Remove as it is for the week before
-    week=$((week - 1))
     echo $week
 }
 
