@@ -12,7 +12,7 @@ website:
     left:
       - href: about.qmd
         text: about
-      - text: "↩ return to website"
+      - text: "↩"
         href: https://aaronwriight.github.io/
     
     tools:

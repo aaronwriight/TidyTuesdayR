@@ -1,9 +1,11 @@
 {
-  "hash": "715d0e60ecd2eff4e33978162550af3c",
+  "hash": "4d63c5bdfc22d196d14e675bcf12aeb1",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Gallery\"\nsubtitle: \"All TidyTuesday viz in one gallery, broken down by year\"\nformat: \n  html:\n    page-layout: full\n    toc: false\n---\n\n::: {.cell}\n\n:::\n\nNo visualizations found.\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"tidy tuesday gallery\"\nformat: \n  html:\n    page-layout: full\n    toc: false\n---\n\n\n---\n\n\n::: {.cell}\n\n:::\n\nNo visualizations found.\n",
+    "supporting": [
+      "index_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
