@@ -1,10 +1,26 @@
-# TidyTuesday
+<h1 style="font-weight:normal" align="center">
+  &nbsp;#TidyTuesday&nbsp;
+</h1>
 
-A collection of visualizations for Tidy Tuesdays, built as a Quarto website with R and Python support.
+A collection of visualizations for Tidy Tuesdays, built as a Quarto website with R and Python support. Forked from Guillaume Noblet @ [gnoblet/TidyTuesday](https://github.com/gnoblet/TidyTuesday) and adapted from Cédric Scherer @ [z3tt/TidyTuesday](https://github.com/z3tt/TidyTuesday).
 
 ## Website
 
-Visit the live website: [here](https://aaronwriight.github.io/tidy_tuesday/)
+Visit the live gallery on my personal website [here](https://aaronwriight.github.io/tidy_tuesday/).
+
+## Contributions
+
+My contributions to the [#TidyTuesday challenge](https://github.com/rfordatascience/tidytuesday), a weekly social data project focused on crafting meaningful and beautiful visualizations using tools from the `{tidyverse}` ecosystem.
+
+<details>
+  <summary>Contributions in chronological order (click to expand)</summary>
+
+<!-- toc -->
+* **Challenges 2025**
+  - _No contributions yet — stay tuned!_
+
+<!-- tocstop -->
+</details>
 
 ## Development Setup
 
@@ -37,28 +53,29 @@ Visit the live website: [here](https://aaronwriight.github.io/tidy_tuesday/)
 
 ### Quick Template Creation
 
-Use the included script `new-viz-from-template.sh` to generate a new visualization from the template (from top-level directory):
+Use the included script `new-viz-from-template.sh` to generate a new visualization from the template (from the top-level directory):
 
 ```bash
-# Usage: $0 <year> <week> <language> <title>
+# Usage: ./new-viz-from-template.sh <date> <week> <language> <title>
 
 # Create a new R analysis
-./new-viz-from-template.sh 2025 29 r "MTA Permanent Art Catalog"
+./new-viz-from-template.sh 2025-07-22 29 r "MTA Permanent Art Catalog"
 
 # Create a new Python analysis  
-./new-viz-from-template.sh 2025 2 python "posit::conf talks"
+./new-viz-from-template.sh 2025-01-09 2 python "posit::conf talks"
 
-# Example with single word title
-./new-viz-from-template.sh 2024 39 r "Olympiad"
+# Example with single-word title
+./new-viz-from-template.sh 2024-09-24 39 r "Olympiad"
 ```
 
 **Arguments:**
-- `date`: Date in YYYY-MM-DD format (e.g., 2024-12-15)
-- `language`: Programming language ('r' or 'python')
-- `title`: Title for the analysis (use quotes if it contains spaces)
+- `date`: ISO date for the challenge (YYYY-MM-DD), e.g., `2024-12-15`
+- `week`: TidyTuesday week number (e.g., 29)
+- `language`: Programming language (`r` or `python`)
+- `title`: Title for the analysis (wrap in quotes if it contains spaces)
 
 This will create:
-- A `.qmd` file in `r/` or `python/` directory with a complete template
+- A `.qmd` file inside a structured folder: `challenges/YYYY/YYYY-MM-DD_WW_Title/language/`
 - All placeholders automatically replaced with your specified values
 - Ready-to-edit analysis structure
 
@@ -66,12 +83,14 @@ This will create:
 
 Each generated visualization includes:
 
-- **Overview**: Description of the analysis and approach
-- **Dataset**: Data loading and exploration
-- **Analysis**: Data preparation and key insights
-- **Visualization**: Main plots and additional analysis
-- **Technical Notes**: Tools, libraries, and methodology
-- **Viz**: The output viz
+- **Overview**: Brief summary of the dataset, analysis goals, and main findings
+- **Dataset**: Description of the data source, structure, and how the data is loaded
+- **Analysis**: Data cleaning, wrangling, and any exploratory steps
+- **Plotting**: Code and explanation for generating the main visualization(s)
+- **Technical Summary**: Tools, packages, and libraries used in the analysis
+- **Visualization**: The final rendered plot or output image
+- **Future Directions**: Suggestions for further analysis, improvements, or data limitations
+- **TidyTuesday References**: Links to relevant TidyTuesday repositories and resources
 
 ### Manual Creation
 
@@ -144,13 +163,10 @@ The website is automatically deployed to GitHub Pages when changes are pushed to
 
 ## Adding New Projects
 
-### R Projects
-1. Add a corresponding Quarto document in `r/YYYY-MM-DD.qmd`
-2. Update `_quarto.yml` sidebar navigation (automated via ./new-viz-from-template.sh)
+Use the `new-viz-from-template.sh` script to add new projects. It creates the proper folder structure and updates `_quarto.yml` automatically.
 
-### Python Projects
-1. Add a corresponding Quarto document in `python/YYYY-MM-DD.qmd`
-2. Update `_quarto.yml` sidebar navigation (automated via ./new-viz-from-template.sh)
+- R projects go in `challenges/YYYY/YYYY-MM-DD_WW_Title/r/`
+- Python projects go in `challenges/YYYY/YYYY-MM-DD_WW_Title/python/`
 
 ## Package Management
 

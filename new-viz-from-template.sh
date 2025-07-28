@@ -1,35 +1,40 @@
 #!/bin/bash
 
 # Script to create a new TidyTuesday visualization from template
-# Usage: ./new-viz-from-template.sh <date> <language> <title>
-# Example: ./new-viz-from-template.sh 2024-12-10 r "Coffee Data Analysis"
-# Creates structure: r/2024/week_XX/week_XX.qmd
+# Usage: ./new-viz-from-template.sh <date> <week> <language> <title>
+# Example: ./new-viz-from-template.sh 2024-12-10 12 r "Coffee Data Analysis"
+# Creates structure: challenges/YYYY/YYYY-MM-DD_WW_Title/language/YYYY-MM-DD_WW_Title.qmd
 
 set -e
 
 #
 # Check arguments
 if [ $# -ne 4 ]; then
-    echo "Usage: $0 <year> <week> <language> <title>"
-    echo "Example: $0 2025 29 r 'MTA Permanent Art Catalog'"
+    echo "Usage: $0 <date> <week> <language> <title>"
+    echo "Example: $0 2025-07-22 29 r 'MTA Permanent Art Catalog'"
     echo "Language options: r, python"
     echo ""
-    echo "Creates structure: challenges/YYYY/YYYY_WW_Title/language/YYYY_WW_Title.qmd"
+    echo "Creates structure: challenges/YYYY/YYYY-MM-DD_WW_Title/language/YYYY-MM-DD_WW_Title.qmd"
     exit 1
 fi
 
-YEAR=$1
+DATE=$1
 WEEK_NUM=$2
 LANGUAGE=$3
 TITLE=$4
 
-# pad week number and sanitize title
+# extract year and pad week number
+YEAR=$(echo "$DATE" | cut -d'-' -f1)
 printf -v WEEK_PAD "%02d" $WEEK_NUM
+
+# sanitize title
 TITLE_SAFE=$(echo "$TITLE" | sed -E 's/[^a-zA-Z0-9]+/_/g' | sed -E 's/^_+|_+$//g')
 
-CHALLENGE_DIR="challenges/${YEAR}/${YEAR}_${WEEK_PAD}_${TITLE_SAFE}"
+# define directories and filenames
+WEEK_DIR="${DATE}_${WEEK_PAD}_${TITLE_SAFE}"
+CHALLENGE_DIR="challenges/${YEAR}/${WEEK_DIR}"
 LANG_DIR="${CHALLENGE_DIR}/${LANGUAGE}"
-QMD_FILE="${LANG_DIR}/${YEAR}_${WEEK_PAD}_${TITLE_SAFE}.qmd"
+QMD_FILE="${LANG_DIR}/${WEEK_DIR}.qmd"
 
 # Create directories
 mkdir -p "$LANG_DIR"
@@ -140,4 +145,4 @@ echo "   4. Run 'quarto render' to build the site"
 echo ""
 echo "Week info:"
 echo "   - Date: $DATE (Week $WEEK_NUM of $YEAR)"
-echo "   - Structure: challenges/${YEAR}/${YEAR}_${WEEK_PAD}_${TITLE_SAFE}/${LANGUAGE}/${YEAR}_${WEEK_PAD}_${TITLE_SAFE}.qmd"
+echo "   - Structure: challenges/${YEAR}/${WEEK_DIR}/${LANGUAGE}/${WEEK_DIR}.qmd"

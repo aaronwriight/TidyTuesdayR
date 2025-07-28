@@ -20,7 +20,7 @@ This week's TidyTuesday focused on [DATASET_DESCRIPTION]. I explored [KEY_INSIGH
 
 # Get data
 library(tidytuesdayR)
-dat <- tt_load("")
+data <- tt_load("")
 
 # Load other required libraries
 {{LIBRARY_IMPORTS}}

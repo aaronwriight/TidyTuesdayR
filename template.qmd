@@ -7,27 +7,72 @@ categories: [{{LANGUAGE}}, {{CATEGORIES}}]
 image: "{{IMAGE_FILE}}"
 ---
 
-## Overview
+<!-- THEMATICS AND RENDERING -->
 
-This week's TidyTuesday focused on [DATASET_DESCRIPTION]. I explored [KEY_INSIGHTS] using {{LANGUAGE}} to [VISUALIZATION_APPROACH].
+::: cell
+
+```{=html}
+<style>
+/* inline code */
+code {
+  background-color: #f5f5f5;
+  color: #859901; /* solarized green */
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-family: monospace;
+  font-size: 0.95em;
+}
+
+/* list item spacing for inline code */
+li code {
+  margin-left: 2px;
+}
+
+/* link styling */
+a {
+  color: #2AA198; /* solarized cyan */
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+</style>
+```
+:::
+
+<!-- CONFIGURATION -->
+
+## Overview
+---
+This week's TidyTuesday challenge focused on [DATASET_DESCRIPTION]. I explored [KEY_INSIGHTS] using {{LANGUAGE}} to [VISUALIZATION_APPROACH].
+
+> **Key Libraries**: {{KEY_LIBRARIES}} <br>
+
+<!-- ENVIRONMENT & DATA -->
 
 ## Dataset
+---
+The dataset for this week included [DATASET_FEATURES].
 
+> **Data:** [Info](Source) <br>
+> **Article:** [Info](Source) <br>
+
+### Import
 ```{{{LANGUAGE_CODE}}}
 #| label: load-data
 #| message: false
 #| warning: false
 
-# Get data
+# Get data (script provided by tidytuesday community)
 library(tidytuesdayR)
-dat <- tt_load("{{DATE}}")
+data <- tt_load("{{DATE}}")
 
 # Load other required libraries
 {{LIBRARY_IMPORTS}}
 
 ```
 
-### Data Structure
+### Structure
 
 ```{{{LANGUAGE_CODE}}}
 #| label: explore-data
@@ -36,18 +81,21 @@ dat <- tt_load("{{DATE}}")
 {{DATA_EXPLORATION}}
 ```
 
-## Analysis
+<!-- WRANGLING & ANALYSIS -->
 
-### Data Preparation
+## Analysis
+---
+### Cleaning
 
 ```{{{LANGUAGE_CODE}}}
 #| label: prep-data
 
-# Clean and prepare the data
+# Clean and prepare the data (script provided by tidytuesday community)
 {{DATA_PREPARATION}}
 ```
 
-## Visualization
+## Plotting
+---
 
 ```{{{LANGUAGE_CODE}}}
 #| label: main-plot
@@ -58,20 +106,30 @@ dat <- tt_load("{{DATE}}")
 # Create the main visualization
 {{MAIN_VISUALIZATION}}
 ```
+<!-- VISUALIZATION & COMMENTARY -->
 
-## Technical Notes
-
+## Technical Summary
+---
 - **Data Source**: [TidyTuesday GitHub Repository](https://github.com/rfordatascience/tidytuesday)
 - **Analysis Date**: {{DATE}}
 - **Tools Used**: {{TOOLS_USED}}
 - **Key Libraries**: {{KEY_LIBRARIES}}
 
-## Viz
-
+## Vizualization
+---
 ![]({IMAGE_FILE})
 
-## Next Steps
-
+## Future Directions
+---
 - [POTENTIAL_IMPROVEMENTS]
 - [FUTURE_ANALYSIS_IDEAS]
 - [DATA_QUALITY_NOTES]
+
+<!-- CITATIONS -->
+
+## TidyTuesday
+---
+> **Official Tidy Tuesday Repository**: [tidytuesday](https://github.com/rfordatascience/tidytuesday) <br>
+> **{tidytuesdayR} Package Repository**: [tidytuesdayR](https://github.com/dslc-io/tidytuesdayR) <br>
+> **CRAN Package**: [CRAN: Package tidytuesdayR](https://CRAN.R-project.org/package=tidytuesdayR) <br>
+> **References** @tidytuesday, @tidytuesdayR
