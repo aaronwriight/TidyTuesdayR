@@ -140,15 +140,28 @@ quarto preview
 ## Project Structure
 
 ```
-├── .github/workflows/    # GitHub Actions for deployment
-├── r/                   # R project pages (Quarto)
-├── python/              # Python project pages (Quarto)
-├── _site/               # Generated website (ignored)
-├── renv/                # R environment
-├── .venv/               # Python virtual environment (ignored)
-├── requirements.txt     # Python dependencies
-├── renv.lock           # R package lockfile
-└── _quarto.yml         # Quarto configuration
+├── .github/workflows/        # GitHub Actions for deployment
+├── challenges/               # Challenge folders by year and week
+│   └── 2025/
+│       └── 2025-07-22_29_MTA_Permanent_Art_Catalog/
+│           └── r/ | python/  # R or Python analysis
+│               ├── 2025-07-22_29_MTA_Permanent_Art_Catalog.qmd
+│               ├── data/
+│               ├── gif/
+│               ├── plots/
+│               └── images/
+├── new-viz-from-template.sh  # Script to create a new project
+├── _quarto.yml               # Quarto configuration
+├── README.md                 # Project README
+├── references.bib            # Bibliography file for citations
+├── renv/                     # R environment directory
+├── renv.lock                 # R package lockfile
+├── setup-dev.sh              # Development setup script
+├── _site/                    # Quarto rendered website (ignored)
+├── template.qmd              # Starter Quarto template
+├── tidytuesdayR.pdf          # TidyTuesday cheat sheet
+├── .venv/                    # Python virtual environment (ignored)
+├── _quarto.yml               # Quarto configuration
 ```
 
 ## Deployment
@@ -177,18 +190,3 @@ Use the `new-viz-from-template.sh` script to add new projects. It creates the pr
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
-
-<!--
-```{text}
-challenges/
-  └── 2024/
-        └── 2024_31_AirQuality/
-              ├── r/
-              │   └── 2024_31_AirQuality.qmd
-              ├── python/    # optional
-              ├── data/
-              ├── gif/
-              ├── plots/
-              └── images/
-```
--->
