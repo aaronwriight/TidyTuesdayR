@@ -1,10 +1,10 @@
 ---
-title: "{{TITLE}}"
-subtitle: "TidyTuesday {{DATE}}"
-date: "{{DATE}}"
+title: "MTA Permanent Art Catalog"
+subtitle: "TidyTuesday 2025-07-22"
+date: "2025-07-22"
 author: "Aaron Wright"
-categories: [{{LANGUAGE}}, {{CATEGORIES}}]
-image: "{{IMAGE_FILE}}"
+categories: [r, ggplot2, tidyverse, data-viz]
+image: "plot.svg"
 ---
 
 <!-- THEMATICS AND RENDERING -->
@@ -44,9 +44,9 @@ a:hover {
 
 ## Overview
 ---
-This week's TidyTuesday challenge focused on [DATASET_DESCRIPTION]. I explored [KEY_INSIGHTS] using {{LANGUAGE}} to [VISUALIZATION_APPROACH].
+This week's TidyTuesday challenge focused on [DATASET_DESCRIPTION]. I explored [KEY_INSIGHTS] using r to [VISUALIZATION_APPROACH].
 
-> **Key Libraries**: {{KEY_LIBRARIES}} <br>
+> **Key Libraries**: ggplot2, dplyr, tidyr <br>
 
 <!-- ENVIRONMENT & DATA -->
 
@@ -54,11 +54,11 @@ This week's TidyTuesday challenge focused on [DATASET_DESCRIPTION]. I explored [
 ---
 The dataset for this week included [DATASET_FEATURES].
 
-> **Source:** [Info](Link) <br>
-> **Article:** [Info](Link) <br>
+> **Source:** [MTA Permanent Art Catalog: Beginning 1980](https://data.ny.gov/Transportation/MTA-Permanent-Art-Catalog-Beginning-1980/4y8j-9pkd/about_data) <br>
+> **Article:** [Permanent Art](https://www.mta.info/agency/arts-design/permanent-art) <br>
 
 ### Import
-```{{{LANGUAGE_CODE}}}
+```{r}
 #| label: load-data
 #| message: false
 #| warning: false
@@ -68,24 +68,15 @@ The dataset for this week included [DATASET_FEATURES].
 library(tidytuesdayR)
 library(tidyverse)
 library(here)
-import pydytuesday
-
-# Get data (script provided by tidytuesday community)
-{{GET_DATA}}
 
 # R
 source("load_tidytuesday_data.R")
-tidytuesday_data <- prepare_tidytuesday_data("{{DATE}}")
-
-# python
-from load_tidytuesday_data import prepare_tidytuesday_data
-data = prepare_tidytuesday_data("{{DATE}}")
-
+tidytuesday_data <- prepare_tidytuesday_data("2025-07-22")
 ```
 
 ### Structure
 
-```{{{LANGUAGE_CODE}}}
+```{r}
 #| label: explore-data
 
 # Examine the dataset
@@ -98,17 +89,27 @@ data = prepare_tidytuesday_data("{{DATE}}")
 ---
 ### Cleaning
 
-```{{{LANGUAGE_CODE}}}
+```{r}
 #| label: prep-data
 
 # Clean and prepare the data (script provided by tidytuesday community)
 {{DATA_PREPARATION}}
+# Clean data provided by the State of New York's data.ny.gov. No cleaning was
+# necessary. We split off the station_lines dataset as a demonstration.
+
+mta_art <- readr::read_csv("https://data.ny.gov/resource/4y8j-9pkd.csv")
+
+station_lines <- mta_art |>
+  dplyr::select("agency", "station_name", "line") |>
+  dplyr::filter(!is.na(.data$line)) |>
+  tidyr::separate_longer_delim("line", ",")
+
 ```
 
 ## Plotting
 ---
 
-```{{{LANGUAGE_CODE}}}
+```{r}
 #| label: main-plot
 #| fig-width: 12
 #| fig-height: 8
@@ -122,9 +123,9 @@ data = prepare_tidytuesday_data("{{DATE}}")
 ## Technical Summary
 ---
 - **Data Source**: [TidyTuesday GitHub Repository](https://github.com/rfordatascience/tidytuesday)
-- **Analysis Date**: {{DATE}}
-- **Tools Used**: {{TOOLS_USED}}
-- **Key Libraries**: {{KEY_LIBRARIES}}
+- **Analysis Date**: 2025-07-22
+- **Tools Used**: R, ggplot2, tidyverse
+- **Key Libraries**: ggplot2, dplyr, tidyr
 
 ## Vizualization
 ---
