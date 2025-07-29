@@ -1,4 +1,3 @@
-
 # load_tidytuesday_data.R
 
 # function to load and prepare all Tidytuesday datasets and save them as individual data frames
@@ -6,7 +5,7 @@ prepare_tidytuesday_data <- function(date) {
   library(tidytuesdayR)
   library(readr)
   library(tibble)
-
+  
   # load all datasets for the specified date
   tt_data <- tt_load(date)
 
@@ -36,6 +35,9 @@ prepare_tidytuesday_data <- function(date) {
     check_parsing_issues(dataset, dataset_name)
     # assign the dataset to the global environment
     assign(dataset_name, dataset, envir = .GlobalEnv)
+    data_dir <- file.path(dirname(rstudioapi::getSourceEditorContext()$path), "data")
+    dir.create(data_dir, showWarnings = FALSE)
+    write_csv(dataset, file.path(data_dir, paste0(dataset_name, ".csv")))
   } else {
     # for multiple datasets
     cat("Datasets found for this date:", paste(names(tt_data), collapse = ", "), "\n")
@@ -54,6 +56,9 @@ prepare_tidytuesday_data <- function(date) {
 
       # assign the dataset to the global environment
       assign(paste0(dataset_name), dataset, envir = .GlobalEnv)
+      data_dir <- file.path(dirname(rstudioapi::getSourceEditorContext()$path), "data")
+      dir.create(data_dir, showWarnings = FALSE)
+      write_csv(dataset, file.path(data_dir, paste0(dataset_name, ".csv")))
     })
   }
 

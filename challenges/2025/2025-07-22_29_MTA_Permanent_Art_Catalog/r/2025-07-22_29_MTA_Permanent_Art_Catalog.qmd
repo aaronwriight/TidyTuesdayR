@@ -44,7 +44,9 @@ a:hover {
 
 ## Overview
 ---
-This week's TidyTuesday challenge focused on [DATASET_DESCRIPTION]. I explored [KEY_INSIGHTS] using r to [VISUALIZATION_APPROACH].
+This week's TidyTuesday challenge focused on [DATASET_DESCRIPTION]. I explored [KEY_INSIGHTS] using r to [VISUALIZATION_APPROACH], asking **do specific agencies tend to attract certain types of art materials?**
+
+My visualization for this challenge was specifically influenced by Cédric Scherer's contribution to the 2020 week 12 challenge (find it [here](https://github.com/z3tt/TidyTuesday/blob/main/R/2020_12_TheOffice.Rmd)), in which he visualized ratings of The Office.
 
 > **Key Libraries**: ggplot2, dplyr, tidyr <br>
 
@@ -64,10 +66,11 @@ The dataset for this week included [DATASET_FEATURES].
 #| warning: false
 
 # Load required libraries
-{{LIBRARY_IMPORTS}}
 library(tidytuesdayR)
 library(tidyverse)
 library(here)
+library(visdat)
+
 
 # R
 source("load_tidytuesday_data.R")
@@ -80,7 +83,12 @@ tidytuesday_data <- prepare_tidytuesday_data("2025-07-22")
 #| label: explore-data
 
 # Examine the dataset
-{{DATA_EXPLORATION}}
+vis_dat(mta_art)
+vis_dat(station_lines)
+
+# mta_art
+print(unique(mta_art$agency))
+print(unique(mta_art$art_material))
 ```
 
 <!-- WRANGLING & ANALYSIS -->
@@ -92,17 +100,15 @@ tidytuesday_data <- prepare_tidytuesday_data("2025-07-22")
 ```{r}
 #| label: prep-data
 
-# Clean and prepare the data (script provided by tidytuesday community)
+# Clean and prepare the data
 {{DATA_PREPARATION}}
-# Clean data provided by the State of New York's data.ny.gov. No cleaning was
-# necessary. We split off the station_lines dataset as a demonstration.
 
-mta_art <- readr::read_csv("https://data.ny.gov/resource/4y8j-9pkd.csv")
+```
 
-station_lines <- mta_art |>
-  dplyr::select("agency", "station_name", "line") |>
-  dplyr::filter(!is.na(.data$line)) |>
-  tidyr::separate_longer_delim("line", ",")
+### Art by material
+
+```{r}
+#| label: curation
 
 ```
 
@@ -116,7 +122,17 @@ station_lines <- mta_art |>
 #| warning: false
 
 # Create the main visualization
-{{MAIN_VISUALIZATION}}
+
+# evolution of materials in art debuts by different agencies over time
+# 6 line plots, vertically (axes flipped) with year on the y, agency groupings on x
+# coloring points by material - requires a bit of configuration with regex
+# interactive to have points reflect art descriptions?
+
+mta_art %>%
+  group_by(agency) %>%
+  ggplot(aes(x = agency, y = art_date), color = agency) +
+  geom_line()
+
 ```
 <!-- VISUALIZATION & COMMENTARY -->
 

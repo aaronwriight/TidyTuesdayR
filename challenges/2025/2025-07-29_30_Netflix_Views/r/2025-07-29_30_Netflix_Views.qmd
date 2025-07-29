@@ -1,0 +1,140 @@
+---
+title: "Netflix Views"
+subtitle: "TidyTuesday 2025-07-29"
+date: "2025-07-29"
+author: "Aaron Wright"
+categories: [r, ggplot2, tidyverse, data-viz]
+image: "plot.svg"
+---
+
+<!-- THEMATICS AND RENDERING -->
+
+::: cell
+
+```{=html}
+<style>
+/* inline code */
+code {
+  background-color: #f5f5f5;
+  color: #859901; /* solarized green */
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-family: monospace;
+  font-size: 0.95em;
+}
+
+/* list item spacing for inline code */
+li code {
+  margin-left: 2px;
+}
+
+/* link styling */
+a {
+  color: #2AA198; /* solarized cyan */
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+</style>
+```
+:::
+
+<!-- CONFIGURATION -->
+
+## Overview
+---
+This week's TidyTuesday challenge focused on [DATASET_DESCRIPTION]. I explored [KEY_INSIGHTS] using r to [VISUALIZATION_APPROACH], asking [RESEARCH_QUESTION]
+
+> **Key Libraries**: ggplot2, dplyr, tidyr <br>
+
+<!-- ENVIRONMENT & DATA -->
+
+## Dataset
+---
+The dataset for this week included [DATASET_FEATURES].
+
+> **Source:** [Info](Link) <br>
+> **Article:** [What We Watched the First Half of 2025](https://about.netflix.com/en/news/what-we-watched-the-first-half-of-2025) <br>
+
+### Import
+```{r}
+#| label: load-data
+#| message: false
+#| warning: false
+
+# Load required libraries
+library(tidytuesdayR)
+library(tidyverse)
+library(here)
+library(readxl)
+library(janitor)
+
+# Get data (script provided by tidytuesday community)
+# R
+source("load_tidytuesday_data.R")
+tidytuesday_data <- prepare_tidytuesday_data("2025-07-29")
+
+```
+
+### Structure
+
+```{r}
+#| label: explore-data
+
+# Examine the dataset
+{{DATA_EXPLORATION}}
+```
+
+<!-- WRANGLING & ANALYSIS -->
+
+## Analysis
+---
+### Cleaning
+
+```{r}
+#| label: prep-data
+
+# Clean and prepare the data
+
+```
+
+## Plotting
+---
+
+```{r}
+#| label: main-plot
+#| fig-width: 12
+#| fig-height: 8
+#| warning: false
+
+# Create the main visualization
+{{MAIN_VISUALIZATION}}
+```
+<!-- VISUALIZATION & COMMENTARY -->
+
+## Technical Summary
+---
+- **Data Source**: [TidyTuesday GitHub Repository](https://github.com/rfordatascience/tidytuesday)
+- **Analysis Date**: 2025-07-29
+- **Tools Used**: R, ggplot2, tidyverse
+- **Key Libraries**: ggplot2, dplyr, tidyr
+
+## Vizualization
+---
+![]({IMAGE_FILE})
+
+## Future Directions
+---
+- [POTENTIAL_IMPROVEMENTS]
+- [FUTURE_ANALYSIS_IDEAS]
+- [DATA_QUALITY_NOTES]
+
+<!-- CITATIONS -->
+
+## TidyTuesday
+---
+> **Official Tidy Tuesday Repository**: [tidytuesday](https://github.com/rfordatascience/tidytuesday) <br>
+> **{tidytuesdayR} Package Repository**: [tidytuesdayR](https://github.com/dslc-io/tidytuesdayR) <br>
+> **CRAN Package**: [CRAN: Package tidytuesdayR](https://CRAN.R-project.org/package=tidytuesdayR) <br>
+> **References** @tidytuesday, @tidytuesdayR

@@ -44,7 +44,7 @@ a:hover {
 
 ## Overview
 ---
-This week's TidyTuesday challenge focused on [DATASET_DESCRIPTION]. I explored [KEY_INSIGHTS] using {{LANGUAGE}} to [VISUALIZATION_APPROACH].
+This week's TidyTuesday challenge focused on [DATASET_DESCRIPTION]. I explored [KEY_INSIGHTS] using {{LANGUAGE}} to [VISUALIZATION_APPROACH], asking [RESEARCH_QUESTION]
 
 > **Key Libraries**: {{KEY_LIBRARIES}} <br>
 
@@ -70,7 +70,7 @@ library(tidyverse)
 library(here)
 import pydytuesday
 
-# Get data (script provided by tidytuesday community)
+# Get data
 {{GET_DATA}}
 
 # R
@@ -101,7 +101,7 @@ data = prepare_tidytuesday_data("{{DATE}}")
 ```{{{LANGUAGE_CODE}}}
 #| label: prep-data
 
-# Clean and prepare the data (script provided by tidytuesday community)
+# Clean and prepare the data
 {{DATA_PREPARATION}}
 ```
 

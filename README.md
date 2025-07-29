@@ -150,8 +150,8 @@ quarto preview
 │               ├── gif/
 │               ├── plots/
 │               └── images/
-├── load_tidytuesday_data.py  # Script to load TidyTuesday day in Python-based .qmds
-├── load_tidytuesday_data.R   # Script to load TidyTuesday day in R-based .qmds
+├── load_tidytuesday_data.py  # Script to load TidyTuesday data in Python-based .qmds
+├── load_tidytuesday_data.R   # Script to load TidyTuesday data in R-based .qmds
 ├── new-viz-from-template.sh  # Script to create a new project
 ├── _quarto.yml               # Quarto configuration
 ├── README.md                 # Project README

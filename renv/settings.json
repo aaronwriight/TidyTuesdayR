@@ -1,7 +1,9 @@
 {
   "bioconductor.version": null,
   "external.libraries": [],
-  "ignored.packages": [],
+  "ignored.packages": [
+    "gifski"
+  ],
   "package.dependency.fields": [
     "Imports",
     "Depends",

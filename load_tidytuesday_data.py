@@ -33,4 +33,9 @@ def prepare_tidytuesday_data(date: str) -> dict:
     if not datasets:
         raise ValueError(f"No CSV datasets loaded for {date}.")
 
+    output_dir = Path(__file__).parent / "data"
+    output_dir.mkdir(exist_ok=True)
+    for name, df in datasets.items():
+        df.to_csv(output_dir / f"{name}.csv", index=False)
+
     return datasets
